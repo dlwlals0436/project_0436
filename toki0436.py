@@ -18,4 +18,15 @@ if __name__ == '__main__':
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
         posts = soup.find("li", {"class": "list-item"})
-        print(posts)
+        post_num = posts.find("div", {"class": "wr-num hidden-xs"}).get_text()
+
+        if latest_num != post_num:
+            latest_num = post_num
+            name = posts.find("span", {"class": "member"}).get_text()
+            ago = posts.find("div", {"class": "wr-date hidden-xs"}).get_text()
+            text = name + '의 새 글이 올라왔어욤' + '\n' + ago
+            bot.sendMessage(-1001555428405, text)
+        time.sleep(30)
+        print('bot 동작 중 현재 게시글 번호' + str(latest_num))
+
+posts = soup.find("li", {"class" : "list-item"}).text
