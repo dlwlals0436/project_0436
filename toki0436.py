@@ -21,6 +21,7 @@ if __name__ == '__main__':
     while True:
         req = requests.get('https://newtoki118.com/toki_free?sca=%EA%B3%B5%EC%9C%A0')
         html = req.text
+        posts = soup.find("li", {"class" : "list-item"})
         post = html.find('div class="wr-num hidden-xs"')
         post_num = html[(post + 29):(post + 34)]
 
