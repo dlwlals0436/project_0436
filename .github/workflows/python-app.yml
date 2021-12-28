@@ -1,0 +1,21 @@
+name: 'toki0436'
+
+on: [push]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v1 // 최신의 커밋으로 가져옴
+      - name: Set up Python  // 파이썬 설치
+        uses: actions/setup-python@v1 // 최신의 파이썬 버전 설치
+      - name: Install dependencies  // 파이썬 필요 라이브러리
+        run: |
+          pip install --upgrade pip // pip version up
+          pip install beautifulsoup4 // bs4 설치
+          pip install PyGithub // github 설치
+          pip install requests
+          pip install python-telegram-bot
+      - name: Run Crawler  // 실제 파이썬 크롤러 실행 단계
+        run: |
+          python toki0436.py
