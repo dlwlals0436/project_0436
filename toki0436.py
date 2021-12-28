@@ -28,5 +28,3 @@ if __name__ == '__main__':
             bot.sendMessage(-1001555428405, text)
         time.sleep(30)
         print('bot 동작 중 현재 게시글 번호' + str(latest_num))
-
-posts = soup.find("li", {"class" : "list-item"}).text
