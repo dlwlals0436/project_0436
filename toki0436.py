@@ -18,7 +18,7 @@ if __name__ == '__main__':
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
         posts = soup.find("li", {"class": "list-item"}).text
-        post_num = int(posts.find("div", {"class": "wr-num hidden-xs"}).text)
+        post_num = int(posts[1:5])
 
         if latest_num != post_num:
             latest_num = post_num
