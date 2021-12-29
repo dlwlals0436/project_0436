@@ -1,4 +1,4 @@
 python-telegram-bot
 beautifulsoup4==4.9.3
 requests==2.26.0
-cloudscraper
+cloudscraper==1.2.58
