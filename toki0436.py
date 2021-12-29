@@ -8,8 +8,6 @@ from bs4 import BeautifulSoup
 import telegram
 
 
-scraper = cfscrape.create_scraper()
-
 bot = telegram.Bot(token='5047253923:AAGRE6Knv20XImmA_OO-WO5x8xW9dSGD2iU')
 
 
