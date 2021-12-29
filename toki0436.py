@@ -24,7 +24,7 @@ if __name__ == '__main__':
         post_num = posts.find("div", {"class" : "wr-num hidden-xs"}).text
 
 
-        if latest_num < post_num :
+        if latest_num != post_num :
             latest_num = post_num
             name =  posts.find("span", {"class" : "member"}).text
             ago =  posts.find("div", {"class" : "wr-date hidden-xs"}).text
