@@ -1,4 +1,5 @@
 
+import cfscrape
 
 import requests
 
@@ -9,6 +10,8 @@ from bs4 import BeautifulSoup
 import telegram
 
 
+scraper = cfscrape.create_scraper()
+print scraper.get("https://newtoki118.com/toki_free?sca=%EA%B3%B5%EC%9C%A0").content
 
 bot = telegram.Bot(token='5047253923:AAGRE6Knv20XImmA_OO-WO5x8xW9dSGD2iU')
 
