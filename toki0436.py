@@ -1,34 +1,38 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
+
+
+import requests
+
 import time
+
+from bs4 import BeautifulSoup
+
 import telegram
-import os
-
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-dv = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 
-dv.get("https://newtoki118.com/toki_free?sca=%EA%B3%B5%EC%9C%A0")
 
 bot = telegram.Bot(token='5047253923:AAGRE6Knv20XImmA_OO-WO5x8xW9dSGD2iU')
 
+
+headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'}
+
 if __name__ == '__main__':
-     
+
+    # 제일 최신 게시글의 번호 저장
     latest_num = 0
     while True:
-        post_num = dv.find_element(By.CSS_SELECTOR,'div.wr-num.hidden-xs').text
-    
-    
+        url = 'https://newtoki118.com/toki_free?sca=%EA%B3%B5%EC%9C%A0'
+        req = requests.get(url, headers = headers)
+        html = req.text
+        soup = BeautifulSoup(html, 'html.parser')
+        posts = soup.find("li", {"class" : "list-item"})
+        post_num = posts.find("div", {"class" : "wr-num hidden-xs"}).text
+
+
         if latest_num != post_num :
             latest_num = post_num
-            name =  dv.find_element(By.CSS_SELECTOR,'span.member').text
-            ago =  dv.find_element(By.CSS_SELECTOR,'div.wr-date.hidden-xs').text
+            name =  posts.find("span", {"class" : "member"}).text
+            ago =  posts.find("div", {"class" : "wr-date hidden-xs"}).text
             text = name + '의 새 글이 올라왔어욤' + '\n' +ago
             bot.sendMessage(-1001555428405, text)
         time.sleep(30)
-        print('bot 동작 중 현재 게시글 번호' + str(latest_num))
+        print('bot 동작 중 현재 게시글 번호' + latest_num)
