@@ -1,5 +1,6 @@
 python-telegram-bot
 
-beautifulsoup4
+time
 
-requests
+os
+
