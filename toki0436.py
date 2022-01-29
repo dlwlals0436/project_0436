@@ -30,5 +30,5 @@ if __name__ == '__main__':
             ago =  posts.find("div", {"class" : "wr-date hidden-xs"}).text
             text = "[롶]" + name + '의 새 글이 올라왔어욤' + "[" + ago + "]"
             bot.sendMessage(-1001555428405, text)
-        time.sleep(10)
+        time.sleep(15)
         print('bot 동작 중 현재 게시글 번호' + latest_num)
