@@ -28,7 +28,7 @@ if __name__ == '__main__':
             latest_num = post_num
             name =  posts.find("span", {"class" : "member"}).text
             ago =  posts.find("div", {"class" : "wr-date hidden-xs"}).text
-            text = name + '의 새 글이 올라왔어욤' + "[" + ago + "]"
+            text = "[롶]" + name + '의 새 글이 올라왔어욤' + "[" + ago + "]"
             bot.sendMessage(-1001555428405, text)
         time.sleep(10)
         print('bot 동작 중 현재 게시글 번호' + latest_num)
