@@ -18,7 +18,7 @@ if __name__ == '__main__':
     latest_num = 0
     while True:
         scraper = cloudscraper.create_scraper()
-        html = scraper.get("https://newtoki119.com/toki_free?sca=%EA%B3%B5%EC%9C%A0").content
+        html = scraper.get("https://newtoki126.com/toki_free?sca=%EA%B3%B5%EC%9C%A0").content
         soup = BeautifulSoup(html, 'html.parser')
         posts = soup.find("li", {"class" : "list-item"})
         post_num = posts.find("div", {"class" : "wr-num hidden-xs"}).text
